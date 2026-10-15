@@ -12,7 +12,10 @@ abstract class Model
 
     protected array $errors = [];
 
-    abstract public function validate(): bool;
+    public function validate(): bool 
+    {
+        return true;
+    }
 
      /**
      * Get the value of id
