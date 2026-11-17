@@ -31,7 +31,7 @@ class Dispatcher
         }
 
         $controller = $this->getControllerName($params);
-        $controller_object = $this->getControllerObject($controller, $params);
+        $controller_object = $this->getControllerObject($controller);
         $action = $this->getActionName($params);
         $args = $this->getActionArguments($controller, $action, $params);
 
@@ -41,7 +41,7 @@ class Dispatcher
         return $middleware_handler->handle($request);
     }
 
-    private function getControllerObject(string $controller, array $params): object {
+    private function getControllerObject(string $controller): object {
 
         $controller_object = $this->container->get($controller);
         $controller_object->setViewer($this->container->get(MVCTemplateViewer::class));
